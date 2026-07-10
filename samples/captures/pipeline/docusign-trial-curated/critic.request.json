@@ -1,0 +1,84 @@
+{
+  "model": "claude-sonnet-4-5-20250929",
+  "max_tokens": 4096,
+  "system": "You are an independent, adversarial critic of a product-activation audit. You did not write the audit. Your job is to try to break it against the value-first framework below, not to praise it and not to rewrite it.\n\nYou receive two things: the onboarding flow (screens and text), and an audit of that flow as JSON. Read the flow yourself, then attack the audit. Find the places where it violates the framework or the flow it was given. Be specific: name the exact field and the exact fault, and say what a corrected audit should do instead.\n\nCheck the audit against these rules, and raise an objection wherever it breaks one:\n\n1. First Value Moment must be a felt-value moment, the point where a user gets real value they can feel, not a business milestone. \"Account created\", \"email verified\", \"reached the dashboard\", \"signed up\" are milestones, not value. If firstValueMoment names a milestone instead of a moment the user actually feels, object with target \"first-value-moment\".\n\n2. No experiment may be generic or templated. \"Seed the first page\", \"share with one person\", \"add a progress bar\" are only valid when the specific flow supports them. If an experiment reads as a default move that ignores what this flow actually offers, object with target \"experiment\" and set targetIndex to that experiment's index.\n\n3. The ranking must be value-first. No funnel-only lever ranks above a value-moment or durable-value lever. Nothing that only speeds an already-fast, non-recurring first hit should lead when recurrence is absent: with no reason to return, the leading move should build recurrence, not shorten a path that is already short. If the order breaks this, object with target \"ranking\".\n\n4. frictionScore must match the four-band rubric, and frictionRationale must name the band the score sits in: 0 to 15 is a single obvious action with no account, no data entry, no wait; 16 to 33 is a short self-serve path; 34 to 66 is a real gate the user controls (verify email, connect an account, enter data) or an unfilled wait; 67 to 100 is a dependency on a party the user does not control, a long wait, or a stack of required steps. If the score sits in the wrong band for the flow, or the rationale names a band the number does not fall in, object with target \"friction-score\".\n\n5. Retention and expansion must be kept apart, and recurrenceSignal must follow the retention read alone. If durableValue merges \"value recurs\" with \"there is an upgrade path\", or recurrenceSignal contradicts the retention the flow actually supports, object with target \"durable-value\".\n\nYou may also object to topDropOff with target \"drop-off\" when it names a place that is not where users most likely churn before value.\n\nAnti-rubber-stamp rule: if you find no real fault, return verdict \"clean\" with an empty objections array. Do not invent an objection to look useful, and do not soften a real one to look agreeable. A clean audit gets a clean verdict.\n\nSet verdict to \"clean\" when there is nothing to fix, \"minor\" when the objections are worth addressing but do not change the core read, and \"significant\" when an objection changes the audit's main conclusion (for example a business-milestone value moment, or a funnel-only lever leading the ranking).\n\nOutput contract: return ONLY valid JSON in this exact shape. No prose before or after, no markdown fences, no comments.\n\n{\n  \"verdict\": \"clean\" | \"minor\" | \"significant\",\n  \"summary\": string,\n  \"objections\": [\n    {\n      \"target\": \"first-value-moment\" | \"experiment\" | \"ranking\" | \"friction-score\" | \"durable-value\" | \"drop-off\",\n      \"targetIndex\": number | null,\n      \"severity\": \"high\" | \"medium\" | \"low\",\n      \"objection\": string,\n      \"fix\": string\n    }\n  ]\n}\n\ntargetIndex is the experiment index 0, 1, or 2 only when target is \"experiment\". For every other target it must be null. summary is one or two sentences naming what you found or, on a clean pass, that the audit holds. Each objection names the exact fault in \"objection\" and what a corrected audit should do in \"fix\".\n\nStyle rules for everything you write in the JSON values:\n- Never use em-dashes. Use commas, colons, or restructure the sentence.\n- Make no unprovable or editorializing claims. State the specific fault and let it carry the point.\n- No corporate jargon. Do not use: delve, leverage as a verb, robust, streamline, synergy, cutting-edge.\n- Voice: direct, specific, senior. Name concrete fields, screens, and actions.",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/01-marketing-home.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/02-email-entry.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/08-premium-vs-free.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/11-select-plan-personal.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/12-payment-info.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/14-getting-started.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/15-home-welcome-back.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/16-set-up-envelope.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Here is the onboarding flow the audit below is about.\n\nUser is a solopreneur or SMB owner who wants to get a contract signed without printing and scanning.\n\n1. From docusign.com, click \"Free Trial.\"\n2. Enter email.\n3. Enter personal info: first name, last name, phone number.\n4. Wait for a 6-digit verification code sent to email, and enter it.\n5. Enter phone number again (not prefilled).\n6. Enter the phone verification code (SMS).\n7. Set password.\n8. See a modal comparing the Premium trial with a Free account (no mention of a credit card yet).\n9. Click Continue.\n10. Select a plan (defaults to eSignature Standard, $30/user/month).\n11. Open plan comparison (Personal $11, Standard $30, Business Pro $45).\n12. Select the Personal plan ($11/user/month).\n13. Return to the plan modal, click Continue to Payment.\n14. Add payment information: a credit card is required. $0 due today, free for 14 days, billed after the trial unless cancelled.\n15. See a \"Just a moment, we're setting up your account\" modal.\n16. See a Getting Started state with next steps and trial info.\n17. Land on Home (\"Welcome back\"), with Get Signatures, Sign a Document, Use a Template, and \"Send your first document for signature.\" Trial ends in 14 days.\n18. Enter the send flow (Set Up Envelope): upload document, add recipients, add message, tag fields, send."
+        },
+        {
+          "type": "text",
+          "text": "Audit to challenge:\n\n{\n  \"firstValueMoment\": \"A counterparty opens the envelope, signs the document, and the completed agreement lands back in the sender's inbox.\",\n  \"frictionScore\": 78,\n  \"frictionRationale\": \"High band (67-100). Value depends on a counterparty the user does not control: the signer must open the envelope, review, and sign before the sender gets the completed document back. The sender also clears a long stack of gates (email verification, phone verification twice, password, payment info including credit card) before they can send their first envelope.\",\n  \"recurrenceSignal\": \"weak\",\n  \"durableValue\": \"Retention: Value recurs only when the user needs another document signed. For a solopreneur or SMB owner, that cadence is irregular and event-driven, not a daily or weekly habit. The completed agreement sits in the Agreements tab, but nothing in the flow builds a reason to return between signing events. The product does not create a collaborative surface or a shared artifact that pulls the user back. Repeat value exists, but it is thin and depends entirely on how often the user's work generates new contracts. Expansion: The flow gates a paid plan behind the first send, so there is a clear upgrade path. The user enters payment info during onboarding and converts to a paid subscription after the 14-day trial unless they cancel. The plan selector shows seat-based pricing and higher tiers (Standard, Business Pro), so expansion moves are seat adds or plan upgrades. However, expansion depends on retention that is weak, because the user returns only when they have another document to send, and the flow does not build a cadence for that. A user who sends one document and does not return for months will churn before they expand.\",\n  \"topDropOff\": \"The counterparty step: after the user sends the envelope, they wait for the signer to open, review, and sign. If the signer does not act quickly, the sender does not reach value, and the trial clock runs without a completed agreement to show for it.\",\n  \"experiments\": [\n    {\n      \"hypothesis\": \"Offer a pre-signed demo envelope on the Getting Started screen that the user can open immediately to see what a completed agreement looks like in their inbox.\",\n      \"rationale\": \"The user waits for a counterparty to sign before they see value. A demo envelope delivers the first value moment in seconds, with no dependency on another party. This gets more users to the felt outcome (a signed document in the inbox) before the trial clock matters, and proves the product works before they invest in sending a real envelope.\",\n      \"lever\": \"value-moment\"\n    },\n    {\n      \"hypothesis\": \"Add a 'Send a reminder in 3 days' option on the envelope confirmation screen, positioned as a habit-building feature rather than a nudge.\",\n      \"rationale\": \"The user sends an envelope and then leaves, with no reason to return until the signer acts or they need another document signed. A reminder to check status or follow up gives the user a concrete reason to come back within the trial window, and builds a return cadence around envelope management rather than waiting for the next signing event. This strengthens retention by creating a second use case (follow-up) on an existing surface.\",\n      \"lever\": \"durable-value\"\n    },\n    {\n      \"hypothesis\": \"Let the user upload a document and tag fields before creating an account, then gate the send behind signup.\",\n      \"rationale\": \"The user clears seven steps (email, personal info, two verification codes, phone again, password, payment) before they can upload a document. Moving the upload and field-tagging to the front of the flow gets the user closer to value before they hit the signup wall, and gives them a concrete artifact (a prepared envelope) that they want to send. This speeds arrival-to-first-value by letting the user start work immediately, then converting them when they are ready to send.\",\n      \"lever\": \"value-moment\"\n    }\n  ]\n}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+# Wrangler config for the keyless-demo proxy (Cloudflare Worker).
+#
+# Deploy from the proxy/ directory:
+#   cd proxy
+#   wrangler secret put ANTHROPIC_API_KEY     # paste the key when prompted
+#   wrangler deploy
+#
+# The key is a Worker secret, never in this file and never in the bundle.
+
+name = "first-value-proxy"
+main = "cloudflare-worker.js"
+compatibility_date = "2024-11-01"
+
+# Rate-limit counters live in a KV namespace, created once via:
+#   wrangler kv namespace create RATE_LIMIT
+# Paste the id it returns below. Without this binding the worker still runs, just
+# unthrottled (the model pin, token cap, image cap, and origin lock still apply).
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "<your-kv-namespace-id>"

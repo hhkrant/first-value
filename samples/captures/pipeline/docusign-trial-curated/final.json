@@ -1,0 +1,25 @@
+{
+  "firstValueMoment": "The user opens their inbox and sees the completed, signed agreement, proving the system worked and their document is legally binding without printing or scanning.",
+  "frictionScore": 85,
+  "frictionRationale": "High band (67-100). Value depends on a counterparty the user does not control: the signer must open the envelope, review, and sign before the sender gets the completed document back. The sender also clears a long stack of gates (email verification, phone verification twice, password, payment info including credit card) before they can send their first envelope.",
+  "recurrenceSignal": "weak",
+  "durableValue": "Retention: Value recurs only when the user needs another document signed. For a solopreneur or SMB owner, that cadence is irregular and event-driven, not a daily or weekly habit. The completed agreement sits in the Agreements tab, but nothing in the flow builds a reason to return between signing events. The product does not create a collaborative surface or a shared artifact that pulls the user back. Repeat value exists, but it is thin and depends entirely on how often the user's work generates new contracts. Expansion: The flow gates a paid plan behind the first send, so there is a clear upgrade path. The user enters payment info during onboarding and converts to a paid subscription after the 14-day trial unless they cancel. The plan selector shows seat-based pricing and higher tiers (Standard, Business Pro), so expansion moves are seat adds or plan upgrades. However, expansion depends on retention that is weak, because the user returns only when they have another document to send, and the flow does not build a cadence for that. A user who sends one document and does not return for months will churn before they expand.",
+  "topDropOff": "The counterparty step: after the user sends the envelope, they wait for the signer to open, review, and sign. If the signer does not act quickly, the sender does not reach value, and the trial clock runs without a completed agreement to show for it.",
+  "experiments": [
+    {
+      "hypothesis": "Offer a pre-signed demo envelope on the Getting Started screen that the user can open immediately to see what a completed agreement looks like in their inbox.",
+      "rationale": "The user waits for a counterparty to sign before they see value. A demo envelope delivers the first value moment in seconds, with no dependency on another party. This gets more users to the felt outcome (a signed document in the inbox) before the trial clock matters, and proves the product works before they invest in sending a real envelope.",
+      "lever": "value-moment"
+    },
+    {
+      "hypothesis": "Let the user save a template from their first envelope and prompt them to send it to another counterparty within the trial window.",
+      "rationale": "The user sends one envelope and does not return until they need another document signed, which may be weeks or months later. A saved template with a prompt to send it again creates a second signing event inside the trial, proving the product's repeat value when the user's workflow actually recurs. This builds recurrence by showing the user that the tool handles multiple agreements, not just one.",
+      "lever": "durable-value"
+    },
+    {
+      "hypothesis": "Let the user upload a document and tag fields before creating an account, then gate the send behind signup.",
+      "rationale": "The user clears seven steps (email, personal info, two verification codes, phone again, password, payment) before they can upload a document. Moving the upload and field-tagging to the front of the flow gets the user closer to value before they hit the signup wall, and gives them a concrete artifact (a prepared envelope) that they want to send. This speeds arrival-to-first-value by letting the user start work immediately, then converting them when they are ready to send.",
+      "lever": "value-moment"
+    }
+  ]
+}

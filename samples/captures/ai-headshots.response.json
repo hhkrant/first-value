@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-4-5-20250929",
+  "id": "msg_reference_ai_headshots",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "```json\n{\n  \"firstValueMoment\": \"The grid of forty generated headshots appears on screen after the twenty-minute model training completes.\",\n  \"frictionScore\": 52,\n  \"frictionRationale\": \"High-moderate band. The user uploads photos and then waits twenty minutes with nothing to do before value appears. The wait is long enough to churn users who leave the tab, and the flow does not fill that gap.\",\n  \"recurrenceSignal\": \"weak\",\n  \"durableValue\": \"Retention: The product delivers one burst of headshots, then offers a monthly refresh with new styles for subscribers. The refresh is a real reason to return, but the flow does not argue for it: a single line under the grid after the user has already seen their shots is a passive mention, not a case for why new styles matter or when the user would want them. Most users will download what they need now and have no reason to come back unless they need headshots again, which is infrequent for most people. The cadence is unclear because the flow does not tie the refresh to a job the user does monthly. Expansion: The paywall gates download at $29 one-time or $9 per month. The subscription path exists, but the flow does not connect it to repeat value. A user who pays once gets what they came for and has no reason to subscribe unless the monthly refresh becomes valuable, which the current flow does not establish. Activation here is fast to the grid but stops at viewing, and viewing without download is not the real value moment for most users. The gap between seeing the headshots and being able to use them is a gate the flow does not prepare the user for during the twenty-minute wait.\",\n  \"topDropOff\": \"The twenty-minute wait after upload. The user has committed time to uploading twelve selfies but receives no value and nothing to do while the model trains. Users who close the tab or forget will not return.\",\n  \"scopeNote\": \"This audit covers the full path from upload through download paywall. The input describes arrival at the grid and the subscription offer, so the friction and value reads include the wait and the paywall gate.\",\n  \"experiments\": [\n    {\n      \"hypothesis\": \"Filling the twenty-minute wait with a preview reduces drop-off and gets more users to the grid.\",\n      \"rationale\": \"The wait is dead time where users churn. Show a low-resolution preview or a single sample headshot at the ten-minute mark with a message that the full grid is rendering. This keeps the user engaged and makes the wait feel shorter. It gets more users to the first value moment by reducing abandonment during the longest gate in the flow.\",\n      \"lever\": \"value-moment\"\n    },\n    {\n      \"hypothesis\": \"Seeding the grid with a use case for the monthly refresh increases subscription take rate.\",\n      \"rationale\": \"The flow offers a subscription but does not argue for it. Add a labeled section to the grid showing three headshots in a suggested use case: 'LinkedIn', 'Dating Profile', 'Email Signature'. Below it, show a preview of next month's styles with the line 'New styles monthly for seasonal updates, job changes, or platform variety'. This ties the refresh to jobs the user will actually do and makes the subscription path clearer. It builds repeat value by giving the user a reason to return that the current passive mention does not.\",\n      \"lever\": \"durable-value\"\n    },\n    {\n      \"hypothesis\": \"Moving the paywall message into the wait screen increases conversion at download.\",\n      \"rationale\": \"The paywall appears after the user has seen the grid, which is late. During the twenty-minute wait, show a message: 'Your headshots are rendering. Download all forty for $29, or subscribe at $9/month for new styles every month.' This sets expectations early and frames the subscription as part of the value rather than a gate that appears after the fact. It is a funnel move that does not get more users to value faster or build repeat usage, so it ranks last.\",\n      \"lever\": \"funnel-only\"\n    }\n  ]\n}\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+    "input_tokens": 2371,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 922,
+    "service_tier": "standard",
+    "inference_geo": "not_available"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-4-5-20250929",
+  "id": "msg_reference_docusign_trial_curated_audit",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "```json\n{\n  \"firstValueMoment\": \"A counterparty opens the envelope, signs the document, and the completed agreement lands back in the sender's inbox.\",\n  \"frictionScore\": 78,\n  \"frictionRationale\": \"High band (67-100). Value depends on a counterparty the user does not control: the signer must open the envelope, review, and sign before the sender gets the completed document back. The sender also clears a long stack of gates (email verification, phone verification twice, password, payment info including credit card) before they can send their first envelope.\",\n  \"recurrenceSignal\": \"weak\",\n  \"durableValue\": \"Retention: Value recurs only when the user needs another document signed. For a solopreneur or SMB owner, that cadence is irregular and event-driven, not a daily or weekly habit. The completed agreement sits in the Agreements tab, but nothing in the flow builds a reason to return between signing events. The product does not create a collaborative surface or a shared artifact that pulls the user back. Repeat value exists, but it is thin and depends entirely on how often the user's work generates new contracts. Expansion: The flow gates a paid plan behind the first send, so there is a clear upgrade path. The user enters payment info during onboarding and converts to a paid subscription after the 14-day trial unless they cancel. The plan selector shows seat-based pricing and higher tiers (Standard, Business Pro), so expansion moves are seat adds or plan upgrades. However, expansion depends on retention that is weak, because the user returns only when they have another document to send, and the flow does not build a cadence for that. A user who sends one document and does not return for months will churn before they expand.\",\n  \"topDropOff\": \"The counterparty step: after the user sends the envelope, they wait for the signer to open, review, and sign. If the signer does not act quickly, the sender does not reach value, and the trial clock runs without a completed agreement to show for it.\",\n  \"experiments\": [\n    {\n      \"hypothesis\": \"Offer a pre-signed demo envelope on the Getting Started screen that the user can open immediately to see what a completed agreement looks like in their inbox.\",\n      \"rationale\": \"The user waits for a counterparty to sign before they see value. A demo envelope delivers the first value moment in seconds, with no dependency on another party. This gets more users to the felt outcome (a signed document in the inbox) before the trial clock matters, and proves the product works before they invest in sending a real envelope.\",\n      \"lever\": \"value-moment\"\n    },\n    {\n      \"hypothesis\": \"Add a 'Send a reminder in 3 days' option on the envelope confirmation screen, positioned as a habit-building feature rather than a nudge.\",\n      \"rationale\": \"The user sends an envelope and then leaves, with no reason to return until the signer acts or they need another document signed. A reminder to check status or follow up gives the user a concrete reason to come back within the trial window, and builds a return cadence around envelope management rather than waiting for the next signing event. This strengthens retention by creating a second use case (follow-up) on an existing surface.\",\n      \"lever\": \"durable-value\"\n    },\n    {\n      \"hypothesis\": \"Let the user upload a document and tag fields before creating an account, then gate the send behind signup.\",\n      \"rationale\": \"The user clears seven steps (email, personal info, two verification codes, phone again, password, payment) before they can upload a document. Moving the upload and field-tagging to the front of the flow gets the user closer to value before they hit the signup wall, and gives them a concrete artifact (a prepared envelope) that they want to send. This speeds arrival-to-first-value by letting the user start work immediately, then converting them when they are ready to send.\",\n      \"lever\": \"value-moment\"\n    }\n  ]\n}\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+    "input_tokens": 14354,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 904,
+    "service_tier": "standard",
+    "inference_geo": "not_available"
+  }
+}

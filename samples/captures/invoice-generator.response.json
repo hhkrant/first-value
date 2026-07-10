@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-4-5-20250929",
+  "id": "msg_reference_invoice_generator",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "```json\n{\n  \"firstValueMoment\": \"A formatted invoice PDF downloads to the device.\",\n  \"frictionScore\": 12,\n  \"frictionRationale\": \"Low friction: the user fills a single form and clicks one button. No account, no wait, no gate.\",\n  \"recurrenceSignal\": \"absent\",\n  \"durableValue\": \"Retention: The flow delivers a one-time hit with no reason to return the user would act on. The account offer appears after the user already has their invoice in hand, and nothing in the flow argues why saving or emailing is worth the friction of creating an account. The user got what they needed without signing up, so the passive mention of an account does not make a case for coming back. Activation without return does not build a business, so the work is a reason to come back, not a shorter path to a first hit that is already fast. Expansion: There is no paid tier, no seat model, no usage gate. The tool is free and complete in one use.\",\n  \"topDropOff\": \"The user does not return after downloading the first invoice, because the flow gives no reason to.\",\n  \"scopeNote\": \"This read covers the complete path from arrival to first value. The user lands on the form, fills it, and downloads the invoice. No steps were omitted.\",\n  \"experiments\": [\n    {\n      \"hypothesis\": \"Show a running total of invoices sent and money tracked after the first download, with a prompt to save the running total by creating an account.\",\n      \"rationale\": \"This builds a return reason by making the tool a running ledger, not a one-time generator. A user who sees a count of invoices sent and total revenue tracked has a reason to come back: the next invoice adds to a record they are building. The prompt to save the total ties the account to a visible benefit, rather than offering it as a feature with no argument. This moves from absent to weak recurrence by giving the user a believable reason to return.\",\n      \"lever\": \"durable-value\"\n    },\n    {\n      \"hypothesis\": \"Pre-fill the business name and logo on the second visit if the user creates an account after the first download.\",\n      \"rationale\": \"This reduces friction on repeat use, which supports the return habit the first experiment builds. A user who sees their business details already filled is more likely to generate a second invoice, which strengthens the running total. This is a durable-value lever because it makes returning faster, not a value-moment lever, because the first invoice is already a one-step path.\",\n      \"lever\": \"durable-value\"\n    },\n    {\n      \"hypothesis\": \"Move the account offer above the Download button and add a line: 'Save this invoice and track your total revenue.'\",\n      \"rationale\": \"This tests whether positioning the account offer before the download, with a specific benefit stated, lifts account creation. The current placement is passive: the user already has the PDF, so the offer reads as extra friction with no upside. Moving it earlier and naming the benefit may capture users who would use a ledger if it were offered as part of the flow, not as an afterthought. This is a funnel-only lever because it does not change the value moment or build repeat usage; it only tests whether more users take the existing account offer.\",\n      \"lever\": \"funnel-only\"\n    }\n  ]\n}\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+    "input_tokens": 2349,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 765,
+    "service_tier": "standard",
+    "inference_geo": "not_available"
+  }
+}

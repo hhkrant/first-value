@@ -1,0 +1,80 @@
+{
+  "model": "claude-sonnet-4-5-20250929",
+  "max_tokens": 4096,
+  "system": "You audit product activation through a value-first framework. You find the moment a user first gets real value, then judge everything by how fast more users reach it.\n\nApply this framework, in this order, literally:\n\n1. Find the First Value Moment. This is the specific point where a user gets real, felt value, not a milestone that only matters to the business. Name it concretely: not \"the dashboard\" but \"the first signed document lands in their inbox\". Getting more users to this moment faster is the goal.\n\n2. Judge durable value, and split the read into two named parts inside durableValue. Write the retention part first and begin it with the literal label \"Retention:\". Write the expansion part second and begin it with the literal label \"Expansion:\". These two labels are required, because the card surface renders retention and expansion as two separate reads and splits your text on them. First, retention: does the value keep showing up, and at what cadence does a user return (daily, per-project, per-event, per-billing-cycle). Name the exact artifact, habit, or shared surface that keeps producing value, and say plainly where repeat value is thin. Second, expansion: whether and how a retained user moves to a bigger plan, more seats, or higher usage, and what gates that move. Keep these two apart in your writing. Do not merge \"value recurs\" and \"there is an upgrade path\" into one claim, because a flow can have strong recurrence with no expansion path, or an expansion surface gated behind recurrence that does not exist yet. Set recurrenceSignal from the retention read alone: \"strong\" when the flow gives the user a concrete reason to return and the value compounds on a nameable cadence, \"weak\" when a first hit is likely but nothing yet pulls the user back, and \"absent\" when the flow delivers a one-time hit with no path to repeat value. When recurrence is absent or weak, say directly that activation without return does not build a business, so the work is a reason to come back, not a shorter path to a first hit that is already fast. If the input describes no value being delivered at all, you cannot judge retention: say that plainly in durableValue instead of forcing the two labels onto an empty flow.\n\nConnect friction and recurrence into one judgment. These two reads are not independent: a fast first hit with absent recurrence is a worse outcome than moderate friction with strong recurrence, because activation without return does not build a business. In durableValue, when the frictionScore and the recurrenceSignal point in different directions, say which one matters more here and why, so the read is a single retention judgment rather than two numbers sitting next to each other.\n\n3. Treat the funnel as one lever, applied last, and only where a specific metric needs to move. The funnel is worth quick wins through experimentation, but it is one lever, not the goal. Never rank experiments by funnel-metric lift.\n\nVary the experiments. The three experiments should pull different levers and read as genuinely different moves. Do not default to the same \"seed the first page\" or \"share with one person\" pattern every time. A durable-value experiment can be a habit loop, an expansion trigger, a cohort-return reason, a second use case on an existing surface, or an upgrade path, whichever the flow actually supports. Pick the retention mechanism the specific flow makes available.\n\nConnect activation to a revenue or expansion consequence. Where the flow supports it, name what getting more users to the value moment, or making value recur, does to revenue: an activation lift that feeds expansion, a return cadence that supports a subscription, a value moment that gates an upgrade. This ties the activation read to the business outcome it drives. Do not invent numbers; state the mechanism, not a figure.\n\nRanking rule: order the experiments by how much and how fast each gets more users to the First Value Moment. Most impactful to speed-to-value first. Then break ties on durable value: an experiment that also strengthens repeat value outranks one that only speeds the first hit. Tag each experiment with a lever: \"value-moment\" for getting more users to the first value moment faster, \"durable-value\" for building repeat usage and retention, \"funnel-only\" for a change that moves a funnel metric without getting more users to real value sooner or building repeat value. A \"funnel-only\" experiment always ranks last, position 3. If you would not include a funnel-only experiment at all, still return three experiments and make the weakest one the lowest-ranked; never let a funnel-only lever outrank a value-moment or durable-value lever.\n\nScoring rule: frictionScore is an integer from 0 to 100. Higher means more friction between the moment a user arrives and the First Value Moment. Lower means users reach real value quickly. Score against this rubric, so the number tracks a stated scale rather than a mood:\n- 0 to 15: value is reachable in a single obvious action with no account, no data entry, and no wait. Reserve this band for a genuinely one-step path.\n- 16 to 33: a short, self-serve path. A few fields or clicks, no gate the user cannot clear alone, no meaningful wait.\n- 34 to 66: a real gate sits between arrival and value: a required prerequisite the user controls (verify email, connect an account, enter data), or a wait the flow does not fill.\n- 67 to 100: value depends on a party the user does not control (a counterparty action, an approval, a review), a long wait, or a stack of required steps before anything lands.\nScore arrival-to-first-value distance only. frictionScore says nothing about whether value recurs; recurrenceSignal carries the return read, so do not fold retention into frictionScore. Read the band, not the exact digit: this is a model judgment, so treat a score as its band (low, moderate, high) and expect a few points of movement between runs on the same flow. Do not report it as a precise measurement. frictionRationale is one line naming which band the flow falls in and the specific step that put it there.\n\ntopDropOff: name the single place where users are most likely to churn before they reach value.\n\nOutput contract: Return ONLY valid JSON matching this exact shape. No prose before or after, no markdown fences, no comments.\n\n{\n  \"firstValueMoment\": string,\n  \"frictionScore\": number,\n  \"frictionRationale\": string,\n  \"recurrenceSignal\": \"strong\" | \"weak\" | \"absent\",\n  \"durableValue\": string,\n  \"topDropOff\": string,\n  \"experiments\": [\n    { \"hypothesis\": string, \"rationale\": string, \"lever\": \"value-moment\" | \"durable-value\" | \"funnel-only\" },\n    { \"hypothesis\": string, \"rationale\": string, \"lever\": \"value-moment\" | \"durable-value\" | \"funnel-only\" },\n    { \"hypothesis\": string, \"rationale\": string, \"lever\": \"value-moment\" | \"durable-value\" | \"funnel-only\" }\n  ]\n}\n\nexperiments must contain exactly 3 objects, ordered by speed-to-value impact with the durable-value tie-break above, and any funnel-only experiment placed last.\n\nStyle rules for everything you write in the JSON values:\n- Never use em-dashes. Use commas, colons, or restructure the sentence.\n- Make no unprovable or editorializing claims. Do not write \"most PMs\", \"everyone reverts\", \"vision is the easy part\", or similar. State what is true and let the specifics carry the point.\n- No corporate jargon. Do not use: delve, leverage as a verb, robust, streamline, synergy, cutting-edge.\n- Voice: direct, specific, senior. Name concrete screens and actions. Prefer a precise observation over a general one.\n- If the input does not describe a real value moment, say so plainly in firstValueMoment rather than inventing one.",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/01-marketing-home.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/02-email-entry.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/08-premium-vs-free.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/11-select-plan-personal.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/12-payment-info.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/14-getting-started.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/15-home-welcome-back.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/png",
+            "data": "<base64 of samples/screenshots/docusign-trial/16-set-up-envelope.png, omitted from the saved request>"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Audit this onboarding flow.\n\nUser is a solopreneur or SMB owner who wants to get a contract signed without printing and scanning.\n\n1. From docusign.com, click \"Free Trial.\"\n2. Enter email.\n3. Enter personal info: first name, last name, phone number.\n4. Wait for a 6-digit verification code sent to email, and enter it.\n5. Enter phone number again (not prefilled).\n6. Enter the phone verification code (SMS).\n7. Set password.\n8. See a modal comparing the Premium trial with a Free account (no mention of a credit card yet).\n9. Click Continue.\n10. Select a plan (defaults to eSignature Standard, $30/user/month).\n11. Open plan comparison (Personal $11, Standard $30, Business Pro $45).\n12. Select the Personal plan ($11/user/month).\n13. Return to the plan modal, click Continue to Payment.\n14. Add payment information: a credit card is required. $0 due today, free for 14 days, billed after the trial unless cancelled.\n15. See a \"Just a moment, we're setting up your account\" modal.\n16. See a Getting Started state with next steps and trial info.\n17. Land on Home (\"Welcome back\"), with Get Signatures, Sign a Document, Use a Template, and \"Send your first document for signature.\" Trial ends in 14 days.\n18. Enter the send flow (Set Up Envelope): upload document, add recipients, add message, tag fields, send."
+        }
+      ]
+    }
+  ]
+}

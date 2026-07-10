@@ -1,0 +1,20 @@
+User is a solopreneur or SMB owner who wants to get a contract signed without printing and scanning.
+
+1. From docusign.com, click "Free Trial."
+2. Enter email.
+3. Enter personal info: first name, last name, phone number.
+4. Wait for a 6-digit verification code sent to email, and enter it.
+5. Enter phone number again (not prefilled).
+6. Enter the phone verification code (SMS).
+7. Set password.
+8. See a modal comparing the Premium trial with a Free account (no mention of a credit card yet).
+9. Click Continue.
+10. Select a plan (defaults to eSignature Standard, $30/user/month).
+11. Open plan comparison (Personal $11, Standard $30, Business Pro $45).
+12. Select the Personal plan ($11/user/month).
+13. Return to the plan modal, click Continue to Payment.
+14. Add payment information: a credit card is required. $0 due today, free for 14 days, billed after the trial unless cancelled.
+15. See a "Just a moment, we're setting up your account" modal.
+16. See a Getting Started state with next steps and trial info.
+17. Land on Home ("Welcome back"), with Get Signatures, Sign a Document, Use a Template, and "Send your first document for signature." Trial ends in 14 days.
+18. Enter the send flow (Set Up Envelope): upload document, add recipients, add message, tag fields, send.

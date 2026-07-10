@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-4-5-20250929",
+  "id": "msg_reference_no_value_moment",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "```json\n{\n  \"firstValueMoment\": \"No value moment described. The input names a KPI and funnel metrics but does not say what action a user takes or what value they receive.\",\n  \"frictionScore\": 0,\n  \"frictionRationale\": \"Cannot score friction without knowing what steps exist between arrival and value, or what value is.\",\n  \"recurrenceSignal\": \"absent\",\n  \"durableValue\": \"Retention: No retention mechanism described. The input does not say what brings a user back or whether the delivered value compounds over time. Expansion: No expansion path described. Without knowing what value is delivered or how usage grows, there is no way to judge whether a user moves to a bigger plan or higher usage.\",\n  \"topDropOff\": \"Cannot identify a drop-off point without seeing the actual flow steps.\",\n  \"scopeNote\": \"The input describes funnel performance but provides no steps, screens, or actions. Cannot audit what is not shown.\",\n  \"experiments\": [\n    {\n      \"hypothesis\": \"Cannot propose an experiment without knowing what the flow does or what value it delivers.\",\n      \"rationale\": \"Experiments require a specific flow to operate on. Name the steps between arrival and value, then the work is findable.\",\n      \"lever\": \"value-moment\"\n    },\n    {\n      \"hypothesis\": \"Cannot propose an experiment without knowing what the flow does or what value it delivers.\",\n      \"rationale\": \"Experiments require a specific flow to operate on. Name the steps between arrival and value, then the work is findable.\",\n      \"lever\": \"durable-value\"\n    },\n    {\n      \"hypothesis\": \"Cannot propose an experiment without knowing what the flow does or what value it delivers.\",\n      \"rationale\": \"Experiments require a specific flow to operate on. Name the steps between arrival and value, then the work is findable.\",\n      \"lever\": \"funnel-only\"\n    }\n  ]\n}\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+    "input_tokens": 2297,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 448,
+    "service_tier": "standard",
+    "inference_geo": "not_available"
+  }
+}

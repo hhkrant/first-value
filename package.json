@@ -1,0 +1,26 @@
+{
+  "name": "first-value",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Audit product activation through a value-first, funnel-last framework.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "capture": "node --env-file-if-exists=.env samples/captures/capture.mjs",
+    "capture:pipeline": "node --env-file-if-exists=.env samples/captures/capture.mjs --pipeline",
+    "test": "node --test",
+    "test:critic": "node --env-file-if-exists=.env --test tests/critic-capability.test.js",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.4.3",
+    "wrangler": "^4.109.0"
+  }
+}

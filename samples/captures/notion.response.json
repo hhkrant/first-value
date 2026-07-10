@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-4-5-20250929",
+  "id": "msg_reference_notion",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "```json\n{\n  \"firstValueMoment\": \"The user types a line, turns it into a heading, adds a checklist, and sees their first formatted block render immediately in a clean interface.\",\n  \"frictionScore\": 18,\n  \"frictionRationale\": \"Low band (16-33). The user reaches real value in three self-guided actions inside the walkthrough with no account gate beyond sign-up, no data entry prerequisite, and no wait.\",\n  \"recurrenceSignal\": \"weak\",\n  \"durableValue\": \"Retention: The first value moment is a formatting demonstration, not a document the user needs to return to. The flow delivers the interface mechanics quickly, but it does not give the user a concrete reason to come back. A saved page exists after the walkthrough, but nothing in the flow makes the case for why the user would open it again or build a second one. The return path depends entirely on whether the user, unprompted, decides Notion is the right place for a real task they already have. Expansion: The invite option appears after the walkthrough with no argument for why it is worth doing. The flow does not connect collaboration to a problem the user has, so the multi-seat path exists but is not sold.\",\n  \"topDropOff\": \"The moment after the walkthrough ends and the user is left in the empty workspace with no next step. The flow has shown what Notion can do but has not connected it to a real use case, so the user must invent their own reason to continue.\",\n  \"scopeNote\": \"This read covers sign-up through the end of the initial walkthrough and the first-page creation prompt. The input describes the full arrival-to-first-value path.\",\n  \"experiments\": [\n    {\n      \"hypothesis\": \"Seed the workspace with a pre-filled page relevant to the user's stated role or goal, so the first page the user opens contains something they would plausibly edit or refer back to.\",\n      \"rationale\": \"The first value moment is fast, but the flow does not give the user a reason to return. A pre-filled page tied to a real use case (meeting notes for a PM, a research log for a student, a project tracker for a team lead) gives the user a second visit trigger and a concrete artifact to iterate on. This builds repeat value where none exists today, and it addresses the top drop-off by offering a next step after the walkthrough ends.\",\n      \"lever\": \"durable-value\"\n    },\n    {\n      \"hypothesis\": \"Replace the generic walkthrough with a choose-your-own path that delivers the first formatting action inside a use-case-specific template, so the user's first formatted block is also their first real page.\",\n      \"rationale\": \"The current walkthrough is fast but delivers value in a throwaway demo. Moving the formatting moment into a real use case (a daily log, a project page, a reading list) gets the user to the same formatting value in the same number of steps, but the artifact they create is one they would return to. This collapses the demo and the first real page into one moment, which both speeds value and builds a return reason.\",\n      \"lever\": \"value-moment\"\n    },\n    {\n      \"hypothesis\": \"Offer a second-page prompt immediately after the first page is created, framed as a related use case, so the user builds a second artifact before leaving the session.\",\n      \"rationale\": \"The invite prompt appears with no sales pitch, so most users skip it. A second-page prompt (a companion page: if the first page is a task list, offer a notes page; if it is a meeting log, offer a decision tracker) gives the user a second formatting win in the same session and increases the chance they have built something worth returning to. This is a smaller lift than the pre-filled or choose-your-own experiments but still moves the user from one artifact to two, which strengthens the return case.\",\n      \"lever\": \"durable-value\"\n    }\n  ]\n}\n```"
+    }
+  ],
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+    "input_tokens": 2407,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 897,
+    "service_tier": "standard",
+    "inference_geo": "not_available"
+  }
+}

@@ -1,0 +1,12 @@
+# Netlify deploy for the static, backend-free build. The app talks to the
+# Anthropic API directly from the browser with the visitor's own key, so there
+# is no server config and no secret held here.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Single-page app: send unknown paths to index.html so a deep link still loads.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
