@@ -26,6 +26,10 @@ __pycache__/
 # Personal Claude Code settings (local only)
 .claude/settings.local.json
 
+# Internal working notes: build plans, session handoffs, runbooks.
+# Local only, never published. The private repo holds their tracked history.
+notes/
+
 # wrangler files
 .wrangler
 .dev.vars*
