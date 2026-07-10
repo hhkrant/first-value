@@ -1,6 +1,6 @@
 # First Value
 
-**Growth work involving onboarding often focuses on the signup funnel: which steps create friction and drop off, and which ones convert. First Value looks at value instead.**
+**Growth work involving onboarding often focuses on signup: which steps create friction and drop off, and which ones convert. First Value looks more closely at if and when the user gets to real product value instead.**
 
 It evaluates each onboarding flow against three questions: where does a user first reach real product value, how fast do users get there, and does the flow give them a reason to come back?
 
